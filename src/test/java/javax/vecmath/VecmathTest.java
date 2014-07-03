@@ -16,6 +16,8 @@
 */
 package javax.vecmath;
 
+import org.junit.*;
+
 /**
  * java.vecmath Test class.
  * <pre>
@@ -134,12 +136,10 @@ public class VecmathTest {
 	}
     }
     static public void ASSERT(boolean condition) {
-	if (!condition)
-	    throw new InternalError("Vecmath Test Failed!");
+    	Assert.assertTrue( condition );
     }
     static public void ASSERT(boolean condition, String comment) {
-	if (!condition)
-	    throw new InternalError("Vecmath Test Failed!: " + comment);
+		Assert.assertTrue( comment, condition );
     }
     static public void exit() {
 	System.out.println("java.vecmath all test passed successfully.");
@@ -149,33 +149,34 @@ public class VecmathTest {
 	} catch (java.io.IOException e) {}
     }
     static public void main(String[] v) {
+    VecmathTest vmt = new VecmathTest();
 	System.out.print("Vector3d ...");
-	Vector3dTest();
+	vmt.Vector3dTest();
 	System.out.println("ok.");
 	System.out.print("Vector3f ...");
-	Vector3fTest();
+	vmt.Vector3fTest();
 	System.out.println("ok.");
 	System.out.print("Matrix3d with Quat4d, AxisAngle4d, Point/Vector3d interaction ...");
-	Matrix3dTest();
+	vmt.Matrix3dTest();
 	System.out.println("ok.");
 
 	System.out.print("Matrix3f with Quat4f, AxisAngle4f, Point/Vector3f interaction ...");
-	Matrix3fTest();
+	vmt.Matrix3fTest();
 	System.out.println("ok.");
 
 	System.out.print("Matrix4d with Quat4d, AxisAngle4d, Point/Vector3d interaction ...");
-	Matrix4dTest();
+	vmt.Matrix4dTest();
 	System.out.println("ok.");
 	System.out.print("Matrix4f with Quat4f, AxisAngle4f, Point/Vector3f interaction ...");
-	Matrix4fTest();
+	vmt.Matrix4fTest();
 	System.out.println("ok.");
 
 	System.out.print("GMatrix with GVector interaction ...");
-	GMatrixTest();
+	vmt.GMatrixTest();
 	System.out.println("ok.");
 
 	System.out.print("SVD test ...");
-	SVDTest();
+	vmt.SVDTest();
 	System.out.println("ok.");
 
 	exit();
@@ -185,7 +186,7 @@ public class VecmathTest {
     //  test  methods.
     /////////////////////
 
-    static public void Vector3dTest() {
+    @Test public void Vector3dTest() {
 	Vector3d zeroVector = new Vector3d();
 	Vector3d v1 = new Vector3d(2,3,4);
 	Vector3d v2 = new Vector3d(2,5,-8);
@@ -237,7 +238,8 @@ public class VecmathTest {
 	ASSERT(equals(v1.length()*v2.length()*Math.cos(ang), v1.dot(v2)));
     }
 
-    static public void Vector3fTest() {
+    @Test
+    public void Vector3fTest() {
 	Vector3f zeroVector = new Vector3f();
 	Vector3f v1 = new Vector3f(2,3,4);
 	Vector3f v2 = new Vector3f(2,5,-8);
@@ -282,7 +284,8 @@ public class VecmathTest {
 	ASSERT(equals(v1.length()*v2.length()*Math.cos(ang), v1.dot(v2)));
     }
 
-    static public void Matrix3dTest() {
+    @Test
+    public void Matrix3dTest() {
 	Matrix3d O = new Matrix3d();
 	Matrix3d I = new Matrix3d(); I.setIdentity();
 	Matrix3d m1 = new Matrix3d();
@@ -480,7 +483,8 @@ public class VecmathTest {
     }
 
 
-    static public void Matrix3fTest() {
+    @Test
+    public void Matrix3fTest() {
     }
 
     static void Mat4dQuatAxisAngle(AxisAngle4d a1) {
@@ -524,7 +528,8 @@ public class VecmathTest {
 
     }
 
-    static public void Matrix4dTest() {
+    @Test
+    public void Matrix4dTest() {
 	Matrix4d O = new Matrix4d();
 	Matrix4d I = new Matrix4d(); I.setIdentity();
 	Matrix4d m1 = new Matrix4d();
@@ -724,9 +729,11 @@ public class VecmathTest {
 	ASSERT(equals(m1, m2)); // not modified
 
     }
-    static public void Matrix4fTest() {
+    @Test
+    public void Matrix4fTest() {
     }
-    static public void GMatrixTest() {
+    @Test
+    public void GMatrixTest() {
 	GMatrix I44 = new GMatrix(4,4); // Identity 4x4
 	GMatrix O44 = new GMatrix(4,4); O44.setZero(); // O 4x4
 	GMatrix O34 = new GMatrix(3,4); O34.setZero(); // O 3x4
@@ -901,7 +908,8 @@ public class VecmathTest {
 	return ok;
     }
 
-    static public void SVDTest() {
+    @Test
+    public void SVDTest() {
         double val[] = {1,2,3,4,
                         5,6,7,8,
                         9,0,8,7,
