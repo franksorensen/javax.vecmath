@@ -182,7 +182,7 @@ public class Matrix3d implements Serializable {
     * @return the String representation
     */
     public String toString() {
-	String nl = System.getProperty("line.separator"); 
+	String nl = System.getProperty("line.separator","\n"); 
 
         return  "["+nl+"  ["+m00+"\t"+m01+"\t"+m02+"]" + nl +
                    "  ["+m10+"\t"+m11+"\t"+m12+"]" + nl +

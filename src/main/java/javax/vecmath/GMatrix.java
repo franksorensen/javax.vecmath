@@ -908,7 +908,7 @@ public class GMatrix implements Serializable {
      * @return the String representation
      */
     public String toString() {
-	String nl = System.getProperty("line.separator"); 
+	String nl = System.getProperty("line.separator","\n"); 
 	StringBuffer out = new StringBuffer("[");
 	out.append(nl);
 

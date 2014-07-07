@@ -284,7 +284,7 @@ public class Matrix4d implements Serializable {
      * @return the String representation
      */
     public String toString() {
-	String nl = System.getProperty("line.separator"); 
+	String nl = System.getProperty("line.separator","\n"); 
         return  "[" + nl + "  ["+m00+"\t"+m01+"\t"+m02+"\t"+m03+"]" + nl +
                    "  ["+m10+"\t"+m11+"\t"+m12+"\t"+m13+"]" + nl +
                    "  ["+m20+"\t"+m21+"\t"+m22+"\t"+m23+"]" + nl +
