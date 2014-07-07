@@ -1,7 +1,9 @@
 apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
 
 group = 'javax'
-version = '1.2.0'
+version = '1.2.0-hiranabe'
 
 repositories {
     mavenCentral()
@@ -13,4 +15,26 @@ dependencies {
 
 task wrapper(type: Wrapper) {
 	gradleVersion = '1.12'
+}
+
+task sourceJar(type: Jar) {
+	from sourceSets.main.allJava
+}
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+
+			artifact sourceJar {
+				classifier "sources"
+			}
+		}
+	}
+	repositories {
+		maven {
+			// change if necessary
+			url "$projectDir/../maven-repository"
+		}
+	}
 }
