@@ -414,4 +414,24 @@ public abstract class Tuple2d implements Serializable {
 	x = beta*x + alpha*t1.x;
 	y = beta*y + alpha*t1.y;
     }
+
+    public double getX()
+    {
+        return x;
+    }
+
+    public void setX(double x)
+    {
+        this.x = x;
+    }
+
+    public double getY()
+    {
+        return y;
+    }
+
+    public void setY(double y)
+    {
+        this.y = y;
+    }
 }

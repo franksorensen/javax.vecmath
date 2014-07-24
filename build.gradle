@@ -3,7 +3,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
 group = 'javax'
-version = '1.2.1-hiranabe'
+version = '1.2.2-hiranabe'
 
 repositories {
     mavenCentral()

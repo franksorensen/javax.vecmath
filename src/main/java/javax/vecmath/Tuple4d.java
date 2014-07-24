@@ -496,4 +496,44 @@ public abstract class Tuple4d implements Serializable {
 	z = beta*z + alpha*t1.z;
 	w = beta*w + alpha*t1.w;
     }
+
+    public double getX()
+    {
+        return x;
+    }
+
+    public void setX(double x)
+    {
+        this.x = x;
+    }
+
+    public double getY()
+    {
+        return y;
+    }
+
+    public void setY(double y)
+    {
+        this.y = y;
+    }
+
+    public double getZ()
+    {
+        return z;
+    }
+
+    public void setZ(double z)
+    {
+        this.z = z;
+    }
+
+    public double getW()
+    {
+        return w;
+    }
+
+    public void setW(double w)
+    {
+        this.w = w;
+    }
 }

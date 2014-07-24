@@ -1207,4 +1207,93 @@ public class Matrix3f implements Serializable {
 	m21 = (float)(tmp1 + tmp2);
     }
 
+    public float getM00()
+    {
+        return m00;
+    }
+
+    public void setM00(float m00)
+    {
+        this.m00 = m00;
+    }
+
+    public float getM01()
+    {
+        return m01;
+    }
+
+    public void setM01(float m01)
+    {
+        this.m01 = m01;
+    }
+
+    public float getM02()
+    {
+        return m02;
+    }
+
+    public void setM02(float m02)
+    {
+        this.m02 = m02;
+    }
+
+    public float getM10()
+    {
+        return m10;
+    }
+
+    public void setM10(float m10)
+    {
+        this.m10 = m10;
+    }
+
+    public float getM11()
+    {
+        return m11;
+    }
+
+    public void setM11(float m11)
+    {
+        this.m11 = m11;
+    }
+
+    public float getM12()
+    {
+        return m12;
+    }
+
+    public void setM12(float m12)
+    {
+        this.m12 = m12;
+    }
+
+    public float getM20()
+    {
+        return m20;
+    }
+
+    public void setM20(float m20)
+    {
+        this.m20 = m20;
+    }
+
+    public float getM21()
+    {
+        return m21;
+    }
+
+    public void setM21(float m21)
+    {
+        this.m21 = m21;
+    }
+
+    public float getM22()
+    {
+        return m22;
+    }
+
+    public void setM22(float m22)
+    {
+        this.m22 = m22;
+    }
 }
