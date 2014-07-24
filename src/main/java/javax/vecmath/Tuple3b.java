@@ -198,4 +198,33 @@ public abstract class Tuple3b implements Serializable {
 	    return "(" + x + ", " + y + ", " + z +")";
     }
 
+    public byte getX()
+    {
+        return x;
+    }
+
+    public void setX(byte x)
+    {
+        this.x = x;
+    }
+
+    public byte getY()
+    {
+        return y;
+    }
+
+    public void setY(byte y)
+    {
+        this.y = y;
+    }
+
+    public byte getZ()
+    {
+        return z;
+    }
+
+    public void setZ(byte z)
+    {
+        this.z = z;
+    }
 }

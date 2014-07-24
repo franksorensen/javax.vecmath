@@ -580,4 +580,34 @@ public abstract class Tuple3d implements Serializable {
 	y = beta*y + alpha*t1.y;
 	z = beta*z + alpha*t1.z;
     }
+
+    public double getX()
+    {
+        return x;
+    }
+
+    public void setX(double x)
+    {
+        this.x = x;
+    }
+
+    public double getY()
+    {
+        return y;
+    }
+
+    public void setY(double y)
+    {
+        this.y = y;
+    }
+
+    public double getZ()
+    {
+        return z;
+    }
+
+    public void setZ(double z)
+    {
+        this.z = z;
+    }
 }

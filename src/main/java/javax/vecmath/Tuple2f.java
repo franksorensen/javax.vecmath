@@ -429,4 +429,24 @@ public abstract class Tuple2f implements Serializable {
 	x = beta*x + alpha*t1.x;
 	y = beta*y + alpha*t1.y;
     }
+
+    public float getX()
+    {
+        return x;
+    }
+
+    public void setX(float x)
+    {
+        this.x = x;
+    }
+
+    public float getY()
+    {
+        return y;
+    }
+
+    public void setY(float y)
+    {
+        this.y = y;
+    }
 }

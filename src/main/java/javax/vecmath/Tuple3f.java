@@ -466,4 +466,34 @@ public abstract class Tuple3f implements Serializable {
 	y = beta*y + alpha*t1.y;
 	z = beta*z + alpha*t1.z;
     }
+
+    public float getX()
+    {
+        return x;
+    }
+
+    public void setX(float x)
+    {
+        this.x = x;
+    }
+
+    public float getY()
+    {
+        return y;
+    }
+
+    public void setY(float y)
+    {
+        this.y = y;
+    }
+
+    public float getZ()
+    {
+        return z;
+    }
+
+    public void setZ(float z)
+    {
+        this.z = z;
+    }
 }

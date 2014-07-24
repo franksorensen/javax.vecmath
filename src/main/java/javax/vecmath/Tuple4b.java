@@ -198,4 +198,43 @@ public abstract class Tuple4b implements Serializable {
 	    return "(" + x + ", " + y + ", " + z + ", " + w + ")";
     }
 
+    public byte getX()
+    {
+        return x;
+    }
+
+    public void setX(byte x)
+    {
+        this.x = x;
+    }
+
+    public byte getY()
+    {
+        return y;
+    }
+
+    public void setY(byte y)
+    {
+        this.y = y;
+    }
+
+    public byte getZ()
+    {
+        return z;
+    }
+
+    public void setZ(byte z)
+    {
+        this.z = z;
+    }
+
+    public byte getW()
+    {
+        return w;
+    }
+
+    public void setW(byte w)
+    {
+        this.w = w;
+    }
 }
