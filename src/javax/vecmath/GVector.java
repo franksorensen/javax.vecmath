@@ -751,6 +751,7 @@ public class GVector implements Serializable {
      * @param   v2 the second vector 
      * @param   alpha the alpha interpolation parameter 
      */
+    @Deprecated
     public final void interpolate(GVector v1, GVector v2, float alpha) {
 	interpolate(v1, v2, (double)alpha);
     }
@@ -763,6 +764,7 @@ public class GVector implements Serializable {
      * @param   v1 the first vector 
      * @param   alpha the alpha interpolation parameter 
      */
+    @Deprecated
     public final void interpolate(GVector v1, float alpha) {
 	interpolate(v1, (double)alpha);
     }

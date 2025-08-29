@@ -377,6 +377,7 @@ public abstract class Tuple3d implements Serializable {
       * @param max the highest value in this tuple after clamping
       * @deprecated As of Java3D API 1.1 Beta02
       */
+    @Deprecated
     public final void clamp(float min, float max) {
 	// why float ?
 	clampMin(min);
@@ -391,6 +392,7 @@ public abstract class Tuple3d implements Serializable {
       * @param t the source tuple, which will not be modified
       * @deprecated As of Java3D API 1.1 Beta02
       */
+    @Deprecated
     public final void clamp(float min, float max, Tuple3d t) {
 	// why float ?
 	set(t);
@@ -402,6 +404,7 @@ public abstract class Tuple3d implements Serializable {
       * @param min the lowest value in this tuple after clamping
       * @deprecated As of Java3D API 1.1 Beta02
       */
+    @Deprecated
     public final void clampMin(float min) {
 	// why float ?
 	if (x < min)
@@ -419,6 +422,7 @@ public abstract class Tuple3d implements Serializable {
       * @parm t the source tuple, which will not be modified
       * @deprecated As of Java3D API 1.1 Beta02
       */
+    @Deprecated
     public final void clampMin(float min, Tuple3d t) {
 	// why float ?
 	set(t);
@@ -432,6 +436,7 @@ public abstract class Tuple3d implements Serializable {
       * @param t the source tuple, which will not be modified
       * @deprecated As of Java3D API 1.1 Beta02
       */
+    @Deprecated
     public final void clampMax(float max, Tuple3d t) {
 	// why float ?
 	set(t);
@@ -444,6 +449,7 @@ public abstract class Tuple3d implements Serializable {
       * @param max the highest value in the tuple after clamping
       * @deprecated As of Java3D API 1.1 Beta02
       */
+    @Deprecated
     public final void clampMax(float max) {
 	// why float ?
 	if (x > max)
@@ -533,6 +539,7 @@ public abstract class Tuple3d implements Serializable {
       * @param alpha the alpha interpolation parameter
       * @deprecated As of Java3D API 1.1 Beta02
       */
+    @Deprecated
     public final void interpolate(Tuple3d t1, Tuple3d t2, float alpha) {
 	// why float ?
 	set(t1);
@@ -547,6 +554,7 @@ public abstract class Tuple3d implements Serializable {
       * @param alpha the alpha interpolation parameter
       * @deprecated As of Java3D API 1.1 Beta02
       */
+    @Deprecated
     public final void interpolate(Tuple3d t1, float alpha) {
 	// why float ?
 	float beta = 1 - alpha;

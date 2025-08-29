@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="vecmath" default="compile" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
+	<property file="${basedir}/build.properties"/>
+	<property name="build.home"    	value="${basedir}/build" />
+	<property name="dist.home"     	value="${basedir}/dist" />
+	<property name="lib.home"     	value="${basedir}/lib" />
+	<property name="src.home"      	value="${basedir}/src" />
+	<property name="package.name"   value="vecmath" />
+	<property name="package.version"   value="1.2.2-hiranabe" />
+
+
+	<property name="compile.debug"    		value="true"/>
+	<property name="compile.deprecation" 	value="false"/>
+	<property name="compile.optimize" 		value="true"/>
+
+	
+	
+	<target name="ivyresolve" description="">
+		<property file="../ivysetup/ivyproperties.properties" />
+		<ivy:settings file="../ivysetup/ivysettings.xml" />
+		<ivy:resolve file="ivy.xml" />
+	</target>
+
+	<target name="ivyretrieve" description="" depends="ivyresolve">
+		<ivy:retrieve sync="true" type="jar,bundle" />
+	</target>
+
+	<target name="ivypublish" description="" depends="dist,ivyresolve">
+		<delete file="${dist.home}/ivy.xml" failonerror="false"></delete>
+		<ivy:publish pubrevision="${package.version}" status="release" resolver="shared" update="true" forcedeliver="true" overwrite="true" >
+			<artifacts pattern="${dist.home}/[artifact]-[revision].[ext]"/>
+		</ivy:publish>	
+	</target>		
+	
+	<target name="prepare">
+		<mkdir dir="${build.home}"/>
+		<mkdir dir="${dist.home}"/>
+		<mkdir dir="${lib.home}"/>
+		
+		<mkdir dir="${dist.home}/lib"/>
+		
+		<copy todir="${build.home}">
+			<fileset dir="${src.home}">
+				<include name="javax/vecmath/**" />
+				<exclude name="javax/vecmath/*Test*" />
+			</fileset>
+		</copy>
+		<copy  todir="${build.home}">
+			<fileset dir="${src.home}" >
+				<include name="module-info.java" />
+				<include name="*.xml" />
+			</fileset>
+	    </copy>
+		<replace file="${build.home}/module-info.java">
+			<replacetoken><![CDATA[requires org.junit.jupiter.api;]]></replacetoken>
+			<replacevalue><![CDATA[]]></replacevalue>
+		</replace>
+		<replace file="${build.home}/module-info.java">
+			<replacetoken><![CDATA[opens javax.vecmath to junit;]]></replacetoken>
+			<replacevalue><![CDATA[]]></replacevalue>
+		</replace>
+		
+		<copy  todir="${dist.home}/lib" verbose="true" flatten="true">
+			<fileset dir="${lib.home}" >
+			</fileset>
+	    </copy>
+
+	</target>
+
+	
+	<target name="compile" depends="prepare" description="Compile Java sources">
+		<javac srcdir="${build.home}"
+    	      destdir="${build.home}"
+    	        debug="${compile.debug}"
+    	  deprecation="${compile.deprecation}"
+    	     optimize="${compile.optimize}"
+	includeantruntime="false"
+			source="21"
+			target="21">
+			
+			<modulepath>
+				<fileset dir="${lib.home}" >
+					<include name="*.jar" />
+				</fileset>
+			</modulepath>
+			
+		</javac>
+	</target>	
+
+	<target name="dist" depends="compile"
+        description="Create the distribution files and directories" >
+		<jar jarfile="${dist.home}/${package.name}-${package.version}.jar" basedir="${build.home}" />
+		
+		<delete failonerror="false">
+			<fileset dir="${dist.home}">
+			    <include name="${package.name}-*.jar"/>
+			    <exclude name="${package.name}-${package.version}.jar"/>
+			</fileset>
+		</delete>
+
+
+		  <pathconvert property="libs.project" pathsep=" ">
+		    <mapper>
+		      <chainedmapper>
+
+		        <!-- remove absolute path -->
+		        <flattenmapper />
+
+		        <!-- add lib/ prefix -->
+		        <globmapper from="*" to="lib/*" />
+		      </chainedmapper>
+		    </mapper>
+
+		    <path>
+
+		      <!-- lib.home contains all jar files, in several subdirectories -->
+		      <fileset dir="${dist.home}/lib">
+		        <include name="**/*.jar" />
+		      </fileset>
+		    </path>
+		  </pathconvert>
+
+
+		<jar jarfile="${dist.home}/${package.name}-${package.version}.jar"
+			basedir="${build.home}" excludes="**/*.java" >
+			<manifest>
+		      <attribute name="Built-By" value="${user.name}" />
+		    </manifest>
+		</jar>
+
+        <exec executable="${java.home}/bin/jar">
+            <arg value="-u"/>
+            <arg value="--file=${dist.home}/${package.name}-${package.version}.jar"/>
+            <arg value="--module-version"/>
+            <arg value="${package.version}"/>
+        </exec>		
+		
+		
+	</target>
+	
+	<target name="clean" description="Delete old build and dist directories">
+		<delete dir="${build.home}"/>
+		<delete dir="${dist.home}"/>
+		<delete dir="${lib.home}"/>
+	</target>
+
+</project>
+	

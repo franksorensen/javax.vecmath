@@ -986,6 +986,7 @@ public class GMatrix implements Serializable {
      * @param m1 The matrix to be compared to this matrix 
      * @param epsilon the threshold value
      */
+    @Deprecated
     public boolean epsilonEquals(GMatrix m1, float epsilon) {
 	if(m1.nRow != nRow)
 	    return false;

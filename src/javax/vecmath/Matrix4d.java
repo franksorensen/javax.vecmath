@@ -1523,6 +1523,7 @@ public class Matrix4d implements Serializable {
       * @param epsilon the threshold value
       * @deprecated As of Java3D API1.1 Beta02
       */
+      @Deprecated
       public boolean epsilonEquals(Matrix4d m1, float epsilon) {
 	  // why epsilon is float ??
 	  return  Math.abs(m00 - m1.m00) <= epsilon

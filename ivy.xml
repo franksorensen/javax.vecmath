@@ -1,0 +1,6 @@
+<ivy-module version="2.0">
+    <info organisation="javax" module="vecmath" status="release" />
+    
+    <dependencies>
+    </dependencies>
+</ivy-module>

@@ -16,7 +16,9 @@
 */
 package javax.vecmath;
 
-import org.junit.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * java.vecmath Test class.
@@ -136,10 +138,10 @@ public class VecmathTest {
 	}
     }
     static public void ASSERT(boolean condition) {
-    	Assert.assertTrue( condition );
+    	assertTrue( condition );
     }
     static public void ASSERT(boolean condition, String comment) {
-		Assert.assertTrue( comment, condition );
+		assertTrue(condition, comment);
     }
     static public void exit() {
 	System.out.println("java.vecmath all test passed successfully.");
